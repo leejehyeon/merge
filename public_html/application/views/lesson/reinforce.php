@@ -84,7 +84,7 @@
 	 }*/
 </script>-->
 <div class="col-xs-9">
-	<form action='/index.php/lesson/enrichment_study/reinforce' method='post' name='ff'>
+	<form action='/index.php/lesson/enrichment_study/reinforce' method='post' name='leap'>
 		<fieldset>
 			<div>
 				<p style="font-size:18px; text-align:center">
@@ -130,8 +130,11 @@
 						<td style="border:1px solid #000000">						<textarea name='reason' style="border:0px; height:62px; margin:0px; padding:0px"></textarea></td>
 						<td style="border:1px solid #000000;">
 							<!--<input type='text' name='year' id='year' style="width:60px;">-->
+							<!--수정시작
 							<select name="p_sYear" onchange=chk()>
-								<option value="">년</option>
+								수정끝-->
+							<select name="year" id="year" onchange=month_day_set()>
+								<option>년</option>
 								<option value="2014">2014</option>
 								<option value="2015">2015</option>
 								<option value="2016">2016</option>
@@ -144,8 +147,8 @@
 								<option value="2023">2023</option>
 								<option value="2024">2024</option>
 							</select> 년
-      						<select name="p_sMonth" onchange=chk1()><option>년을 선택해주세요</option></select> 월
-        						<select name="p_sDay"><option>년을 선택해주세요</option></select> 일
+      						<select name="month" id="month" onchange=day_set()><option>년을 선택해주세요</option></select> 월
+        						<select name="day" id="day"><option>년을 선택해주세요</option></select> 일
 							<!--<select name="month" onchange= "day_change();" style="width:60px;">
 								<option value="">월</option>
 								<option value="1">1월</option>

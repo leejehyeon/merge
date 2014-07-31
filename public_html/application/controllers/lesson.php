@@ -189,6 +189,9 @@ class Lesson extends CI_Controller {
 		if ($data['name'] == "reinforce") {
 			$this -> form_validation -> set_rules('subject', '교과목명', 'required');
 			$this -> form_validation -> set_rules('reason', '보강사유', 'required');
+			/*수정시작*/
+			$this -> form_validation -> set_rules('year', '날짜(년)', 'required');
+			/*수정끝*/
 			$this -> form_validation -> set_rules('month', '날짜(월)', 'required');
 			$this -> form_validation -> set_rules('day', '날짜(일)', 'required');
 			$this -> form_validation -> set_rules('startTime', '시작시간', 'required');
@@ -197,7 +200,7 @@ class Lesson extends CI_Controller {
 			if ($this -> form_validation -> run() == FALSE) {
 				$this -> load -> view('lesson/reinforce', $data);
 			} else {
-				$reinforc_array = array('subject' => $this -> input -> post('subject'), 'reason' => $this -> input -> post('reason'), 'date' => $this -> input -> post('month') . $this -> input -> post('day'), 'startTime' => $this -> input -> post('startTime'), 'endTime' => $this -> input -> post('endTime'), 'classroom' => '승인 대기 중');
+				$reinforc_array = array('subject' => $this -> input -> post('subject'), 'reason' => $this -> input -> post('reason'), 'date' => $this -> input -> post('year') . $this -> input -> post('month') . $this -> input -> post('day'), 'startTime' => $this -> input -> post('startTime'), 'endTime' => $this -> input -> post('endTime'), 'classroom' => '승인 대기 중');
 				$this -> load -> model('reinforce_model');
 				$this -> reinforce_model -> reinforce_registration($reinforc_array);
 				alert('보강 신청이 완료되었습니다.', '/index.php/lesson/enrichment_study');
@@ -211,6 +214,9 @@ class Lesson extends CI_Controller {
 		if ($data['name'] == "reinforce_admin") {
 			$this -> form_validation -> set_rules('subject', '교과목명', 'required');
 			$this -> form_validation -> set_rules('reason', '보강사유', 'required');
+			/*수정시작*/
+			$this -> form_validation -> set_rules('year', '날짜(년)', 'required');
+			/*수정끝*/
 			$this -> form_validation -> set_rules('month', '날짜(월)', 'required');
 			$this -> form_validation -> set_rules('day', '날짜(일)', 'required');
 			$this -> form_validation -> set_rules('startTime', '시작시간', 'required');
@@ -220,7 +226,7 @@ class Lesson extends CI_Controller {
 			if ($this -> form_validation -> run() == FALSE) {
 				$this -> load -> view('lesson/reinforce_admin', $data);
 			} else {
-				$reinforc_array = array('subject' => $this -> input -> post('subject'), 'reason' => $this -> input -> post('reason'), 'date' => $this -> input -> post('month') . $this -> input -> post('day'), 'startTime' => $this -> input -> post('startTime'), 'endTime' => $this -> input -> post('endTime'), 'classroom' => $this -> input -> post('classroom'));
+				$reinforc_array = array('subject' => $this -> input -> post('subject'), 'reason' => $this -> input -> post('reason'), 'date' => $this -> input -> post('year') . $this -> input -> post('month') . $this -> input -> post('day'), 'startTime' => $this -> input -> post('startTime'), 'endTime' => $this -> input -> post('endTime'), 'classroom' => $this -> input -> post('classroom'));
 				$this -> load -> model('reinforce_model');
 				$this -> reinforce_model -> reinforce_registration($reinforc_array);
 				alert('강의실 배정이 완료되었습니다.', '/index.php/lesson/enrichment_study_admin');

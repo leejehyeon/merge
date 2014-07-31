@@ -352,37 +352,38 @@ function makeSel(tgt,first,last,saw) {
       cnt++;
     }  
   }*/
-   function makeSel(tgt,fr,to,def) {
-    var cnt = 0;
-    var f = document.ff;
-    
-    f.elements[tgt].options.length=0;
-    var str='';
-    
-    for ( var i=fr; i<=to; i++){     
-      newItem=new Option(cnt);
-      f.elements[tgt].options[cnt]=newItem;
-      f.elements[tgt].options[cnt].text=i;
-      f.elements[tgt].options[cnt].value=i;
-      
-      if(i==def) {
-        f.elements[tgt].options[cnt].selected=true;
-      }
-      cnt++;
-    }  
-  }
 
-function chk(){
-  var f = document.ff;
-  var sdate = new Date(f.p_sYear.value,f.p_sMonth.value,0);
+function month_day_set(){
+  var set = document.leap;
+  var sdate = new Date(set.year.value,set.month.value,0);
   var slastDay = sdate.getDate();
-  makeSel('p_sMonth',1,12,1);
-  makeSel('p_sDay',1,slastDay,1);
+  makeOption('month',1,12,1);
+  makeOption('day',1,slastDay,1);
 }
 
-function chk1(){
-  var f = document.ff;
-  var sdate = new Date(f.p_sYear.value,f.p_sMonth.value,0);
+function day_set(){
+  var set = document.leap;
+  var sdate = new Date(set.year.value,set.month.value,0);
   var slastDay = sdate.getDate();
-  makeSel('p_sDay',1,slastDay,1);
+  makeOption('day',1,slastDay,1);
+}
+
+function makeOption(list,first,last,init) {
+    var count = 0;
+    var set = document.leap;
+    
+    set.elements[list].options.length=0;
+    var str='';
+    
+    for ( var i=first; i<=last; i++){     
+      newItem = new Option(count);
+      set.elements[list].options[count]=newItem;
+      set.elements[list].options[count].text=i;
+      set.elements[list].options[count].value=i;
+      
+      if(i==init) {
+        set.elements[list].options[count].selected=true;
+      }
+      count++;
+    }  
 }
